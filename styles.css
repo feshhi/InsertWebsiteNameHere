@@ -1,0 +1,22 @@
+.welcomeText{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 300%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.background{
+    background: black;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.box img {
+width: 400px;
+height: 500px;
+}
