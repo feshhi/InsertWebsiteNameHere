@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .flexBoxVertical{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    }
+
+    .flexBoxHorizontal{
+        display:flex;
+        flex-direction: column;
+    }
+
+    p{
+        align-self: center;
+        font-size: larger;
+    }
+
+
+    #redButton{
+        background-color: black;
+        color: white;
+        width: 100px;
+        height:50px;
+        font-size: 24px;
+    }
+
+    #blueButton{
+        background-color: black;
+        color: white;
+        width: 100px;
+        height:50px;
+        font-size: 24px;
+    }
+
+    #greenButton{
+        background-color: black;
+        color: white;
+        width: 100px;
+        height:50px;
+        font-size: 24px;
+    }
+
+    #greenButtonClickCount{}
+
+    #redButtonClickCount{}
+
+    #blueButtonClickCount{}
+
+    #greenButtonHoverCount{}
+
+    #redButtonHoverCount{}
+
+    #blueButtonHoverCount{}
+</style>
+<body>
+    <div class="flexBoxVertical">
+        <div class="flexBoxHorizontal">
+            <button id ="redButton" onclick="changeBackground('red')" onmouseenter="mouseCrossesOver('red')">RED</button>
+            <p>Red count: <span id="redButtonClickCount"></span></p>
+            <p>Hover count: <span id="redButtonHoverCount"></span></p>
+        </div>
+        <div class="flexBoxHorizontal">
+            <button id ="greenButton" onclick="changeBackground('green')" onmouseenter="mouseCrossesOver('green')">GREEN</button>
+            <p>Green count: <span id="greenButtonClickCount"></span></p>
+            <p>Hover count: <span id="greenButtonHoverCount"></span></p>
+        </div>
+        <div class="flexBoxHorizontal">
+            <button onclick="changeBackground('blue')" id ="blueButton" onmouseenter="mouseCrossesOver('blue')">BLUE</button>
+            <p>Blue count: <span id="blueButtonClickCount"></span></p>
+            <p>Hover count: <span id="blueButtonHoverCount"></span></p>
+        </div>
+
+    </div>
+
+    <script>
+        let redButton = document.getElementById("redButton");
+        let greenButton = document.getElementById("greenButton");
+        let blueButton = document.getElementById("blueButton");
+
+        let clickCountRed = 0;
+        let clickCountGreen = 0;
+        let clickCountBlue = 0;
+
+        let hoverCountRed = 0;
+        let hoverCountGreen = 0;
+        let hoverCountBlue = 0;
+
+        document.getElementById("redButtonClickCount").innerHTML = clickCountRed;
+        document.getElementById("greenButtonClickCount").innerHTML = clickCountGreen;
+        document.getElementById("blueButtonClickCount").innerHTML = clickCountBlue;
+
+        document.getElementById("redButtonHoverCount").innerHTML = hoverCountRed;
+        document.getElementById("greenButtonHoverCount").innerHTML = hoverCountGreen;
+        document.getElementById("blueButtonHoverCount").innerHTML = hoverCountBlue;
+
+        function changeBackground(color){
+            document.body.style.backgroundColor = color;
+            if(color == 'red'){
+                clickCountRed++;
+                document.getElementById("redButtonClickCount").innerHTML = clickCountRed;
+            }
+            else if(color == 'green'){
+                clickCountGreen++;
+                document.getElementById("greenButtonClickCount").innerHTML = clickCountGreen;
+            }
+            else{
+                clickCountBlue++;
+                document.getElementById("blueButtonClickCount").innerHTML = clickCountBlue;
+            }
+        }
+
+        function mouseCrossesOver(color){
+            if(color == 'red'){
+                if(redButton.style.color == 'white'){
+                    redButton.style.color = 'black';
+                    redButton.style.backgroundColor = 'white';
+                }
+                else{
+                    redButton.style.color = 'white';
+                    redButton.style.backgroundColor = 'black';
+                }
+                hoverCountRed++;
+                document.getElementById("redButtonHoverCount").innerHTML = hoverCountRed;
+            }
+            else if(color == 'green'){
+                if(greenButton.style.color == 'white'){
+                    greenButton.style.color = 'black';
+                    greenButton.style.backgroundColor = 'white';
+                }
+                else{
+                    greenButton.style.color = 'white';
+                    greenButton.style.backgroundColor = 'black';
+                }
+                hoverCountGreen++;
+                document.getElementById("greenButtonHoverCount").innerHTML = hoverCountGreen;
+            }
+            else{
+                if(blueButton.style.color == 'white'){
+                    blueButton.style.color = 'black';
+                    blueButton.style.backgroundColor = 'white';
+                }
+                else{
+                    blueButton.style.color = 'white';
+                    blueButton.style.backgroundColor = 'black';
+                }
+                hoverCountBlue++;
+                document.getElementById("blueButtonHoverCount").innerHTML = hoverCountBlue;
+            }
+        }
+    </script>
+</body>
+</html>
