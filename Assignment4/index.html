@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="styles.css" rel="stylesheet" title="desktopStyleSheet" type="text/css" />
 </head>
 <style>
     .flexBoxVertical{
@@ -18,66 +19,33 @@
         flex-direction: column;
     }
 
-    p{
-        align-self: center;
-        font-size: larger;
-    }
-
-
-    #redButton{
-        background-color: black;
-        color: white;
-        width: 100px;
-        height:50px;
-        font-size: 24px;
-    }
-
-    #blueButton{
-        background-color: black;
-        color: white;
-        width: 100px;
-        height:50px;
-        font-size: 24px;
-    }
-
-    #greenButton{
-        background-color: black;
-        color: white;
-        width: 100px;
-        height:50px;
-        font-size: 24px;
-    }
-
-    #greenButtonClickCount{}
-
-    #redButtonClickCount{}
-
-    #blueButtonClickCount{}
-
-    #greenButtonHoverCount{}
-
-    #redButtonHoverCount{}
-
-    #blueButtonHoverCount{}
 </style>
 <body>
-    <div class="flexBoxVertical">
-        <div class="flexBoxHorizontal">
-            <button id ="redButton" onclick="changeBackground('red')" onmouseenter="mouseCrossesOver('red')">RED</button>
-            <p>Red count: <span id="redButtonClickCount"></span></p>
-            <p>Hover count: <span id="redButtonHoverCount"></span></p>
+    <div class="flexBoxHorizontal">
+        <div class="navBar">
+            <a class="anchorStyling" href="/index.html">
+                <div class="navBarBackgroundItem">
+                    <p class="navBarItem">Home</p>
+                </div>
+            </a>
         </div>
-        <div class="flexBoxHorizontal">
-            <button id ="greenButton" onclick="changeBackground('green')" onmouseenter="mouseCrossesOver('green')">GREEN</button>
-            <p>Green count: <span id="greenButtonClickCount"></span></p>
-            <p>Hover count: <span id="greenButtonHoverCount"></span></p>
+        <div class="flexBoxVertical">
+            <div class="flexBoxHorizontal">
+                <button id ="redButton" onclick="changeBackground('red')" onmouseenter="mouseCrossesOver('red')">RED</button>
+                <p>Red count: <span id="redButtonClickCount"></span></p>
+                <p>Hover count: <span id="redButtonHoverCount"></span></p>
+            </div>
+            <div class="flexBoxHorizontal">
+                <button id ="greenButton" onclick="changeBackground('green')" onmouseenter="mouseCrossesOver('green')">GREEN</button>
+                <p>Green count: <span id="greenButtonClickCount"></span></p>
+                <p>Hover count: <span id="greenButtonHoverCount"></span></p>
+            </div>
+            <div class="flexBoxHorizontal">
+                <button onclick="changeBackground('blue')" id ="blueButton" onmouseenter="mouseCrossesOver('blue')">BLUE</button>
+                <p>Blue count: <span id="blueButtonClickCount"></span></p>
+                <p>Hover count: <span id="blueButtonHoverCount"></span></p>
+            </div>
         </div>
-        <div class="flexBoxHorizontal">
-            <button onclick="changeBackground('blue')" id ="blueButton" onmouseenter="mouseCrossesOver('blue')">BLUE</button>
-            <p>Blue count: <span id="blueButtonClickCount"></span></p>
-            <p>Hover count: <span id="blueButtonHoverCount"></span></p>
-        </div>
-
     </div>
 
     <script>
