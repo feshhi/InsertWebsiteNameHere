@@ -1,4 +1,10 @@
-.background{
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>JavaScript Business Cards</title>
+   <style>
+       .background{
     background-color: #181818;
 }
 
@@ -9,11 +15,20 @@
     align-content: center;
 }
 
+.containerHorizontalFlex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 50px;
+}
+
 .containerHorizontal{
     display: inline-block;
 }
 
-.h1{
+h1{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 400%;
     color: whitesmoke;
@@ -30,32 +45,7 @@
     padding-left: 150px;
     padding-right: 150px;
     padding-top: 50px;
-}
-
-.pictureTall{
-    width: 500px;
-    height: 1000px;
-    padding-right: 150px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-top: 110px;
-    float: right;
-}
-
-.gif{
-    width: 1000px;
-    height: 700px;
-    padding-right: 150px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-top: 110px;
-    float: right;
-}
-
-.pictureWide{
-    width: 1000px;
-    height: 700px;
-    margin-top: 100px;
+    text-align: center;
 }
 
 .navBar{
@@ -81,8 +71,8 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 45px;
     border-radius: 10px;
     background: #A9A9A9;
     -webkit-border-radius: 10px;
@@ -92,7 +82,7 @@
 }
 
 .navBarItem{
-    font-size: 100%;
+    font-size: 150%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: whitesmoke;
 }
@@ -101,12 +91,26 @@
     text-decoration: none;
 }
 
-.floatRightImageWide{
-    width: 1000px;
-    height: 700px;
-    padding-right: 150px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-top: 110px;
-    float: right;
-}
+   </style>
+  </head>
+  <body class="background">
+    <div class="containerVerticalFlex">
+        <div class="navBar">
+            <a class="anchorStyling" href="/102938.html">
+                <div class="navBarBackgroundItem">
+                    <p class="navBarItem">Home</p>
+                </div>
+            </a>
+        </div>
+        <h1>JavaScript Business Cards</h1>
+        <label for="birthday" class="text">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" style = "margin-top: 20px; width: 200px; height: 50px;">
+        <p class="text">External script output coming up…</p>
+        <div class = "text">
+            <script type="text/javascript" src="cards.js"></script>
+        </div>
+       
+        <p class="text">External script output has ended.</p>
+    </div>
+  </body>
+</html>

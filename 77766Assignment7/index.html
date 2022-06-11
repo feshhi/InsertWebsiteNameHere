@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <style>
-    .background{
+.background{
     background-color: #181818;
 }
 
@@ -31,7 +31,7 @@
     display: inline-block;
 }
 
-.h1{
+h1{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 400%;
     color: whitesmoke;
@@ -48,6 +48,7 @@
     padding-left: 150px;
     padding-right: 150px;
     padding-top: 50px;
+    text-align: center;
 }
 
 .navBar{
@@ -93,63 +94,67 @@
     text-decoration: none;
 }
 
-.floatRightImageWide{
-    width: 1000px;
-    height: 700px;
-    padding-right: 150px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-top: 110px;
-    float: right;
-
-}
-
-select{
-    margin-top: 50px;
-    width: 150px;
-    height: 50px;
-    font-size: 25px;
-    text-align: center;
-    background-color: #181818;
-    border-color: whitesmoke;
+form{
+    font-size: 250%;
     color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    text-align: center;
 }
-
-.space{
-    width: 1500px;
-    height: 600px;
-    border-color: whitesmoke;
-    margin-top: 50px;
-    border: 1px solid whitesmoke;
-}
-
 
 </style>
-<body class="background">
+
+<body class = "background">
     <div class="containerVerticalFlex">
         <div class="navBar">
-            <a class="anchorStyling" href="/index.html">
+            <a class="anchorStyling" href="/102938.html">
                 <div class="navBarBackgroundItem">
                     <p class="navBarItem">Home</p>
                 </div>
             </a>
         </div>
-        <div class="containerHorizontalFlex">
-            <select name="colors" id="colors">
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="yellow">Yellow</option>
-                <option value="white">White</option>
-            </select>
-            <button class="navBarItem" style="margin-top:50px; margin-left: 50px; background-color: #181818; border: solid white 1px">
-                Make button
-            </button>
-        </div>
-        <div class="space">
-        </div>
+
+        <h1>Sorting String Arrays</h1>
+        <p class = "text">Enter two or more names in the field below,
+        and the sorted list of names will appear in the
+        text area.</p>
+
+        <form name="theform" onsubmit="SortNames(); return false;">
+        Name:
+        <input type="text" name="newname" size="20">
+        <input type="button" name="addname" value="Add"
+        onclick="SortNames();">
+        <br>
+        <h2>Sorted Names</h2>
+        <textarea cols="60" rows="10" name="sorted">
+        The sorted names will appear here.
+        </textarea>
+        </form>
     </div>
+
     <script>
+        // initialize the counter and the array
+        var numbernames=0;
+        var names = new Array();
+        function SortNames() {
+            document.theform.sorted.value = "";
+            // Get the name from the text field
+            thename=document.theform.newname.value;
+            thename = thename.toUpperCase();
+            // Add the name to the array
+            names[numbernames]=thename;
+            // Increment the counter
+            numbernames++;
+            // Sort the array
+            names.sort();
+
+            for(let i = 0; i < names.length; i++){
+                document.theform.sorted.value += + (i + 1) + ". " +  names[i] + "\n";
+            }
+        }
     </script>
 </body>
 </html>

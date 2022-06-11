@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>JavaScript Business Cards</title>
+<script src="cards.js"></script>
+<style>
+
+.background{
+    background-color: #181818;
+}
+
+.containerVerticalFlex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.containerHorizontalFlex{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.containerHorizontal{
+    display: inline-block;
+}
+
+h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 400%;
+    color: whitesmoke;
+    font-weight: bolder;
+    align-self: center;
+    padding-top: 50px;
+}
+
+.text{
+    font-size: 250%;
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+.navBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    width: 1500px;
+    height: 75px;
+    border-radius: 10px;
+    align-self: center;
+    background:	whitesmoke;
+    margin-top: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    justify-content: space-evenly;
+}
+
+.navBarBackgroundItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    background: #A9A9A9;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.navBarItem{
+    font-size: 150%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+}
+
+.anchorStyling{
+    text-decoration: none;
+}
+
+input{
+    margin-right: 50px;
+    margin-left: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+    font-size: 20px;
+    background-color: #181818;
+    border: whitesmoke solid 1px;
+}
+
+button{
+    width: 300px;
+    height: 50px;
+}
+
+#injectionPoint{}
+
+p{
+    font-size: 250%;
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+
+   </style>
+</head>
+<body class="background">
+    <div class="containerVerticalFlex">
+        <div class="navBar">
+            <a class="anchorStyling" href="/102938.html">
+                <div class="navBarBackgroundItem">
+                    <p class="navBarItem">Home</p>
+                </div>
+            </a>
+        </div>
+        <h1>JavaScript Business Cards</h1>
+        <div class="containerHorizontalFlex">
+            <label for="name" class="text">Name:</label>
+            <input type="text" name="name" id="name" style = "width: 300px;">
+            <label for="email" class="text">Email:</label>
+            <input type="text" name="email" id="email" style = "width: 300px;">
+            <label for="address" class="text" >Address:</label>
+            <input type="text" name="address" id="address" style = "width: 350px;">
+        </div>
+        <div class="containerHorizontalFlex" style="padding-top: 40px;">
+            <label for="phone" class="text">Phone:</label>
+            <input type="text" id="phone" name="phone">
+            <label for="birthday" class="text">Birthday:</label>
+            <input type="date" id="birthday" name="birthday">
+        </div>
+        <button 
+        style="margin-top: 80px; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;" onclick="addCard()">
+        Make new card
+        </button>
+        <button 
+        style="margin-top: 80px; font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;" onclick="printCard()">
+        Show all cards
+        </button>
+        <p id="injectionPoint">
+            
+        </p>
+    </div>
+    <script>
+        var cardArray = [];
+        isVisible = false;
+
+
+
+
+        function printCard() {
+            if(isVisible){
+                isVisible = false;
+                document.getElementById("injectionPoint").innerHTML = "";
+            }
+            else
+                isVisible = true;
+            if(isVisible){
+                isVisible = true;
+                for(let i = 0; i < cardArray.length; i++){
+                    var nameLine = "<strong>Name: </strong>" + cardArray[i].name + "<br>";
+                    var emailLine = "<strong>Email: </strong>" + cardArray[i].email  + "<br>";
+                    var addressLine = "<strong>Address: </strong>" + cardArray[i].address  + "<br>";
+                    var phoneLine = "<strong>Phone: </strong>" + cardArray[i].phone  + "<br>";
+                    var birthday = "<strong>Birthday: </strong>" + cardArray[i].birthday  + "<hr>";
+                    document.getElementById("injectionPoint").innerHTML += nameLine;
+                    document.getElementById("injectionPoint").innerHTML += emailLine;
+                    document.getElementById("injectionPoint").innerHTML += addressLine;
+                    document.getElementById("injectionPoint").innerHTML += phoneLine;
+                    document.getElementById("injectionPoint").innerHTML += birthday;
+                }
+            }
+        }
+
+        function Card(name,email,address,phone,birthday) {
+            this.name = name;
+            this.email = email;
+            this.address = address;
+            this.phone = phone;
+            this.birthday = birthday;
+            this.printCard = printCard;
+        }
+
+        function addCard(){
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+            var phone = document.getElementById("phone").value;
+            var birthday = document.getElementById("birthday").value;
+
+            var tempCard = new Card(name, email, address, phone, birthday);
+            cardArray[cardArray.length] = tempCard;
+
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("birthday").value = "";
+
+        }
+    </script>
+</body>
+</html>
