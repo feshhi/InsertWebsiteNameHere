@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying Keypresses</title>
+    <script type="text/javascript">
+    function displayKey(e) {
+       // which key was pressed?
+       if (e.keyCode) {
+          var keycode=e.keyCode;
+       }  else {
+          var keycode=e.which;
+       }
+       character=String.fromCharCode(keycode);
+
+
+       // find the object for the destination paragraph
+       var keysParagraph = document.getElementById('keys');
+       if(character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u'){
+           character = character.toUpperCase();
+       }
+
+       if(character == 'r' || character == 'R' ){
+           document.body.style.background = "red";
+           var all = document.getElementsByTagName("*");
+           for (var i=0, max=all.length; i < max; i++) {
+                all[i].style.color = "black";
+            }
+       }
+
+       if(character == 'g' || character == 'G' ){
+           document.body.style.background = "green";
+           var all = document.getElementsByTagName("*");
+           for (var i=0, max=all.length; i < max; i++) {
+                all[i].style.color = "black";
+            }
+       }
+
+       if(character == 'b' || character == 'B' ){
+           document.body.style.background = "blue";
+           var all = document.getElementsByTagName("*");
+           for (var i=0, max=all.length; i < max; i++) {
+                all[i].style.color = "black";
+            }
+       }
+
+       // add the character to the paragraph
+       keysParagraph.innerHTML += character;
+    }
+    </script>
+
+<style>
+    .background{
+background-color: #181818;
+}
+
+.containerVerticalFlex{
+display: flex;
+flex-direction: column;
+align-items: center;
+align-content: center;
+}
+
+.containerHorizontalFlex{
+display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+justify-content: center;
+gap: 50px;
+}
+
+.containerHorizontal{
+display: inline-block;
+}
+
+h1{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 400%;
+color: whitesmoke;
+font-weight: bolder;
+align-self: center;
+padding-top: 50px;
+}
+
+.text{
+font-size: 250%;
+color: whitesmoke;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: lighter;
+padding-left: 150px;
+padding-right: 150px;
+padding-top: 50px;
+text-align: center;
+}
+
+.navBar{
+display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+width: 1500px;
+height: 75px;
+border-radius: 10px;
+align-self: center;
+background:	whitesmoke;
+margin-top: 50px;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+-ms-border-radius: 10px;
+-o-border-radius: 10px;
+justify-content: space-evenly;
+}
+
+.navBarBackgroundItem{
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+width: 150px;
+height: 45px;
+border-radius: 10px;
+background: #A9A9A9;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+-ms-border-radius: 10px;
+-o-border-radius: 10px;
+}
+
+.navBarItem{
+font-size: 150%;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: whitesmoke;
+}
+
+p{
+font-size: 150%;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: whitesmoke;
+}
+</style>
+  </head>
+  <body class = "background" onkeypress="displayKey(event)">
+    <div class="containerVerticalFlex">
+        <div class="navBar">
+            <a class="anchorStyling" href="/102938.html">
+                <div class="navBarBackgroundItem">
+                    <p class="navBarItemHome">Home</p>
+                </div>
+            </a>
+        </div>
+            <h1>Displaying Typed Characters</h1>
+    <p>This document includes a simple script that displays
+        the keys you type as a new paragraph below. Type a few keys
+        to try it. </p>
+    <div class="text">
+        <div id="keys"></div>
+    </div>
+    </div>
+  </body>
+</html>

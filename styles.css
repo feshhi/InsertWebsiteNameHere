@@ -9,62 +9,13 @@
     align-content: center;
 }
 
-.containerHorizontal{
-    display: inline-block;
-}
-
-.h1{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 400%;
-    color: whitesmoke;
-    font-weight: bolder;
-    align-self: center;
-    padding-top: 50px;
-}
-
-.text{
-    font-size: 250%;
-    color: whitesmoke;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: lighter;
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-top: 50px;
-}
-
-.pictureTall{
-    width: 500px;
-    height: 1000px;
-    padding-right: 150px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-top: 110px;
-    float: right;
-}
-
-.gif{
-    width: 1000px;
-    height: 700px;
-    padding-right: 150px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-top: 110px;
-    float: right;
-}
-
-.pictureWide{
-    width: 1000px;
-    height: 700px;
-    margin-top: 100px;
-}
-
 .navBar{
     display: flex;
     flex-direction: row;
     align-items: center;
     align-content: center;
     width: 1500px;
-    height: 75px;
+    height: 100px;
     border-radius: 10px;
     align-self: center;
     background:	whitesmoke;
@@ -81,8 +32,69 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    width: 100px;
-    height: 30px;
+    width: 250px;
+    height: 75px;
+    border-radius: 10px;
+    background: #A9A9A9;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.navBarBackgroundItem p{
+    color: whitesmoke;
+    padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    font-size: 35px;
+}
+
+.navBarBackgroundItem:hover p{
+    display: none;
+}
+
+.dropdownDisplay{
+    display: none;
+    width: 250px;
+    height: 400px;
+    margin-top: 300px;
+    background-color: whitesmoke;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    text-decoration: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.navBarBackgroundItem:hover .dropdownDisplay{
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownDisplay a{
+
+    color: whitesmoke;
+    padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+}
+
+.dropdownDisplayBackgroundItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 200px;
+    height: 65px;
+    margin-top: 12.5px;
+    margin-left: 25px;
     border-radius: 10px;
     background: #A9A9A9;
     -webkit-border-radius: 10px;
@@ -99,14 +111,4 @@
 
 .anchorStyling{
     text-decoration: none;
-}
-
-.floatRightImageWide{
-    width: 1000px;
-    height: 700px;
-    padding-right: 150px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-top: 110px;
-    float: right;
 }
