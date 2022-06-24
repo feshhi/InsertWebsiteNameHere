@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AJAX Live Search Example</title>
+    <script type="text/javascript" src="ajax.js"></script>
+    <style>
+        
+        .background{
+            background-color: #181818;
+        }
+
+        .containerVerticalFlex{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+
+        }
+
+        .containerHorizontalFlex{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+        gap: 25px;
+        }
+
+
+        h1{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 200%;
+            color: whitesmoke;
+            font-weight: bolder;
+            align-self: center;
+            padding-top: 50px;
+        }
+
+        p{
+            font-size: 250%;
+            color: whitesmoke;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: lighter;
+            text-align: center;
+        }
+
+        .navBar{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            width: 1500px;
+            height: 75px;
+            border-radius: 10px;
+            align-self: center;
+            background:	whitesmoke;
+            margin-top: 50px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            justify-content: space-evenly;
+        }
+
+        .navBarBackgroundItem{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            width: 150px;
+            height: 45px;
+            border-radius: 10px;
+            background: #A9A9A9;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+        }
+
+        .navBarItem{
+            font-size: 175%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        .anchorStyling{
+            text-decoration: none;
+        }
+
+        input{
+
+            width: 200px;
+            height: 50px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: whitesmoke;
+            font-size: 20px;
+            background-color: #181818;
+            border: whitesmoke solid 1px;
+        }
+
+        li{
+            font-size: 30px;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body class="background">
+    <div class="containerVerticalFlex">
+        <div class="navBar">
+            <a class="anchorStyling" href="/102938.html">
+                <div class="navBarBackgroundItem">
+                    <p class="navBarItem">Home</p>
+                </div>
+            </a>
+        </div>
+        <h1>AJAX Live Search Example</h1>
+
+        <p><strong>Search for:</strong>
+        <input type="text" size="40" id="searchlive"></p>
+    
+        <div id="results">
+        <ul id="list">
+        <li>[Search results will display here.]</li>
+        </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="search.js"></script>
+ </body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+
+    <style>
+    .background{
+        background-color: #181818;
+    }
+
+    .containerVerticalFlex{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+       
+    }
+
+
+
+    .containerHorizontalFlex{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+       gap: 25px;
+    }
+
+
+    h1{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 200%;
+        color: whitesmoke;
+        font-weight: bolder;
+        align-self: center;
+        padding-top: 50px;
+    }
+
+    p{
+        font-size: 250%;
+        color: whitesmoke;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: lighter;
+        text-align: center;
+    }
+
+    .navBar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        width: 1500px;
+        height: 75px;
+        border-radius: 10px;
+        align-self: center;
+        background:	whitesmoke;
+        margin-top: 50px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        justify-content: space-evenly;
+    }
+
+    .navBarBackgroundItem{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        width: 150px;
+        height: 45px;
+        border-radius: 10px;
+        background: #A9A9A9;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .navBarItem{
+        font-size: 175%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: whitesmoke;
+        font-weight: bold;
+    }
+
+    .anchorStyling{
+        text-decoration: none;
+    }
+    ul{
+        color: whitesmoke;
+        margin-bottom: 150px;
+        margin-right: 250px;
+    }
+
+    audio{
+        width: 600px;
+        margin-left: 300px;
+    }
+
+
+    button{
+        border: 1px solid whitesmoke;
+        background-color: #181818;
+        width: 100px;
+        height: 35px;
+        margin-bottom: 20px;
+        color: whitesmoke;
+        font-weight: bold;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    #fastForwardButton{
+        margin-left: 100px;
+    }
+
+    #audio{
+
+    }
+
+    #rewind{
+    }
+
+    #pauseOrPlay{
+    }
+
+    #runTime{
+
+    }
+
+    li{
+        font-size: 25px;
+        list-style:decimal;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    #titles{
+    }
+
+    #deleteItems{
+        width: 200px;
+        height: 60px;
+    }
+
+    #addItem{
+        width: 150px;
+        height: 40px;
+    }
+
+    #list{
+        margin-top: 50px;
+        margin-left: 50px;
+    }
+    </style>
+</head>
+<body class="background">
+    <div class="containerVerticalFlex">
+        <div class="navBar">
+            <a class="anchorStyling" href="/102938.html">
+                <div class="navBarBackgroundItem">
+                    <p class="navBarItem">Home</p>
+                </div>
+            </a>
+        </div>
+        <p>Song: Alive by Dabin</p>
+        <div class="containerHorizontalFlex">
+            <button id="deleteItems">Delete current item</button>
+            <div class="containerVerticalFlex">
+                <button id="addItem">Add item</button>
+                <input type="text" name="titleName" id="titleName" style="margin-top:-10px;" >
+            </div>
+        </div>
+        <div class="containerHorizontalFlex">
+            <div class="containerVerticalFlex">
+                <h1 style="text-decoration: underline; margin-right: 225px; margin-bottom: -50px;">Playlist</h1>
+                <ul id="list">
+                  
+                </ul>
+            </div>
+            <div class="containerVerticalFlex" style = "margin-left: -150px;" >
+                <div class="containerHorizontalFlex">
+                    <button id="fastForwardButton">Forward</button>
+                    <button id="rewind">Back</button>
+                    <button id="pauseOrPlay">Play</button>
+                </div>
+                <audio id="audio" controls>
+                    <source src="/10001ProjectOne/Dabin_-_Alive_feat_RUNN_(getmp3.pro).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p style="margin-top: -2px; margin-left: 300px;">Current Time: <span id="runTime"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Declare things we may need, like the audio track, the button listeners, and the buttons to adjust their innerHTML.
+        let audioTrack = document.getElementById("audio");
+        let fastForwardButton = document.getElementById("fastForwardButton").addEventListener('click', fastForward);
+        let rewindButton = document.getElementById("rewind").addEventListener('click', rewind);
+        let pauseOrPlay = document.getElementById("pauseOrPlay").addEventListener('click', doThing);
+        let pauseOrPlayButton = document.getElementById("pauseOrPlay");
+        let deleteItem = document.getElementById("deleteItems").addEventListener('click', removeItem);
+        let addItem = document.getElementById("addItem").addEventListener('click', addAnItem);
+
+        // Creates an array of 50 items initiated to null so it can be iterated over. 
+        let sortedTitles = [];
+
+        // Keeps updating to properly display the time past. 
+        audioTrack.ontimeupdate = function() {keepTrackOfTime()};
+        
+        // Our way to keep track of what track is selected for the deletion element.
+        var currentlySelectedTrack = "";
+
+        // Creates 5 titles with timestamps and puts them into array
+        let dropOne = {name: "First Drop", time: 110};
+        sortedTitles[0] = dropOne;
+        let intro = {name: "Intro", time: 0}
+        sortedTitles[1] = intro;
+        let  pickup = {name: "Pickup", time : 83};
+        sortedTitles[2] = pickup;
+        let comeDown = {name: "Falling", time: 330};
+        sortedTitles[3] = comeDown;
+        let dropTwo = {name: "Second Drop", time: 274};
+        sortedTitles[4] = dropTwo;
+
+        // Calling method to display the tracks.
+        showTitles();
+
+        // Adds an item by creating our object and putting it into the end of the array then showing all of the titles.
+        function addAnItem(){
+            let newEntry = {name: document.getElementById("titleName").value, time: Math.floor(audioTrack.currentTime)};
+            sortedTitles[sortedTitles.length] = newEntry;
+
+            showTitles();
+        }
+
+        // Takes the list and uses currentlySelectedTrack to remove it from the element and the array. 
+        function removeItem(){
+            var list = document.getElementById("list");
+            var item = document.getElementById(currentlySelectedTrack);
+            list.removeChild(item);
+            for(let i = 0; i < sortedTitles.length; i++){
+                if(sortedTitles[i].name == currentlySelectedTrack){
+                    sortedTitles.splice(i, 1);
+                }
+            }
+        }
+
+        // Uses audioTrack.currentTime to find the min and seconds into the song. Then makes the innerHTML of the span display the values.
+        function keepTrackOfTime(){
+            let min = Math.floor(audioTrack.currentTime/60);
+            let secondsRemaining = Math.floor(audioTrack.currentTime - (min*60));
+            document.getElementById("runTime").innerHTML = min + " min and " + secondsRemaining + " sec";
+        }
+
+        // Uses audioTrack.currentTime to add 15 seconds to the song, then update the span to show that properly in the time tracker.
+        function fastForward() {
+            audioTrack.currentTime += 15;
+            document.getElementById("runTime").innerHTML = Math.floor(audioTrack.currentTime);
+        }
+
+        // Uses audioTrack.currentTime to remove 15 seconds from the song, then update the span to show that properly in the time tracker.
+        function rewind(){
+            audioTrack.currentTime -= 15;
+            document.getElementById("runTime").innerHTML = Math.floor(audioTrack.currentTime);
+        }
+
+        // If the button says play, make the track play and the button say pause and vice versa.
+        function doThing(){
+            if(pauseOrPlayButton.innerHTML == "Play"){
+                audioTrack.play();
+                pauseOrPlayButton.innerHTML = "Pause";
+            }
+            else{
+                audioTrack.pause();
+                pauseOrPlayButton.innerHTML = "Play";
+            }
+        }
+
+        // First, the function sorts everything by timestamp. 
+        // Second, it wipes the Playlist clear to make room for the changes.
+        // Third, it creates a list element for each timestamp and gives it an on click function and any relevant details.
+        // Lastly, it inserts it into the list. 
+        function showTitles(){
+            sortedTitles.sort((a, b) => (a.time > b.time) ? 1 : -1);
+
+            while(document.getElementById("list").firstChild){
+                document.getElementById("list").removeChild(document.getElementById("list").firstChild);
+            }
+
+            for(let i = 0; i < sortedTitles.length; i++){
+                let listItem = document.createElement("li");
+                listItem.setAttribute('id', sortedTitles[i].name);
+                listItem.innerHTML = sortedTitles[i].name + "<br>";
+                let stoppingPoint = sortedTitles[i].time + 10;
+
+                listItem.onclick = function(){
+                    audioTrack.currentTime = sortedTitles[i].time;
+                    currentlySelectedTrack = sortedTitles[i].name;
+                    audioTrack.play();
+                    audioTrack.ontimeupdate = function() {keepTrackOfTime()};
+
+                    int = setInterval(function() {
+                    if (audio.currentTime > stoppingPoint) {
+                        audio.pause();
+                        clearInterval(int);
+                    }
+                    }, 10);
+
+                    audioTrack.play();
+            }
+
+            let elementOfInsertion = document.getElementById("list");
+            elementOfInsertion.appendChild(listItem);
+        }
+        }
+    </script>
+</body>
+</html>

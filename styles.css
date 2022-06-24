@@ -32,7 +32,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    width: 250px;
+    width: 200px;
     height: 75px;
     border-radius: 10px;
     background: #A9A9A9;
@@ -57,7 +57,7 @@
 
 .dropdownDisplay{
     display: none;
-    width: 250px;
+    width: 200px;
     height: 400px;
     margin-top: 300px;
     background-color: whitesmoke;
